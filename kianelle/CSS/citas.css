@@ -1,0 +1,524 @@
+/* --- Importación de Fuentes de Google Fonts --- */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Poppins:wght@300;400;500;600&display=swap');
+
+/* --- Variables de Color y Estilos Globales --- */
+:root {
+    --bg-color: #fdf8f5;
+    --primary-light: #EADED5;
+    --primary-medium: #D3B8A5;
+    --primary-dark: #c5a992;
+    --text-dark: #332a2a;
+    --text-medium: #5c4b4b;
+    --text-light: #8a7a7a;
+    --white: #fff;
+    --gold: #c5a992;
+    --shadow: 0 8px 25px rgba(0, 0, 0, 0.07);
+    --font-heading: 'Playfair Display', serif;
+    --font-body: 'Poppins', sans-serif;
+}
+
+/* --- Reset Básico y Estilos del Body --- */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+    font-family: var(--font-body);
+    background-color: var(--bg-color);
+    color: var(--text-medium);
+    line-height: 1.7;
+}
+
+/* --- Estilos Generales y Contenedor --- */
+.container { width: 90%; max-width: 1200px; margin: 0 auto; }
+h1, h2, h3 { font-family: var(--font-heading); color: var(--text-dark); font-weight: 700; }
+h1 { font-size: 3.5rem; line-height: 1.2; }
+h2 { font-size: 2.5rem; line-height: 1.3; }
+h3 { font-size: 1.4rem; font-weight: 500; }
+section { padding: 5rem 0; }
+a { text-decoration: none; color: inherit; }
+
+/* --- Componentes Reutilizables (Botones, Tags, etc.) --- */
+.btn {
+    text-decoration: none;
+    padding: 0.9rem 1.8rem;
+    border-radius: 8px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    border: 1px solid transparent;
+}
+.btn-primary { background-color: var(--primary-medium); color: var(--text-dark); }
+.btn-primary:hover { background-color: var(--primary-dark); transform: translateY(-3px); }
+.btn-secondary { background-color: transparent; color: var(--text-medium); border-color: var(--primary-light); }
+.btn-secondary:hover { background-color: var(--primary-light); }
+.btn-white { background-color: var(--white); color: var(--text-medium); font-weight: 600; padding: 1rem 2.5rem; }
+.btn-white:hover { background-color: var(--primary-light); transform: translateY(-3px); }
+.btn-transparent-white {
+    background-color: rgba(255, 255, 255, 0.2);
+    color: var(--white);
+    border: 1px solid var(--white);
+}
+.btn-transparent-white:hover {
+    background-color: var(--white);
+    color: var(--text-dark);
+}
+
+.tag {
+    display: inline-block;
+    background-color: var(--primary-light);
+    color: var(--text-medium);
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+    font-weight: 500;
+}
+
+.section-header { text-align: center; max-width: 700px; margin: 0 auto 3rem; }
+.section-header h2 { margin-bottom: 1rem; }
+
+/* --- HEADER --- */
+.site-header {
+    padding: 1.5rem 0;
+    background-color: var(--bg-color);
+    border-bottom: 1px solid var(--primary-light);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+.header-container { display: flex; justify-content: space-between; align-items: center; }
+.logo a {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    font-family: var(--font-heading);
+    font-weight: bold;
+    color: var(--text-dark);
+}
+
+.logo img {
+    height: 70px; 
+    width: 70px;  
+    object-fit: cover; 
+    border-radius: 50%; 
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+.logo a:hover img {
+    transform: scale(1.05);
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+}
+
+.logo-text {
+    display: flex;
+    flex-direction: column;
+}
+
+.logo-text span {
+    font-size: 0.9rem;
+    font-family: var(--font-body);
+    letter-spacing: 2px;
+    color: var(--text-light);
+}
+
+.main-nav ul { list-style: none; display: flex; gap: 2rem; }
+.main-nav a { font-weight: 500; position: relative; }
+.main-nav a::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: var(--primary-dark);
+    transition: width 0.3s ease;
+}
+.main-nav a:hover::after, .main-nav a.active::after { width: 100%; }
+
+.page-hero {
+    background-color: var(--primary-light);
+    text-align: center;
+    padding: 3rem 0;
+}
+
+#appointment-form-section {
+    padding: 5rem 0;
+    background-color: var(--white);
+}
+
+.form-container {
+    max-width: 800px;
+    margin: 0 auto;
+    background-color: var(--bg-color);
+    padding: 3rem;
+    border-radius: 15px;
+    box-shadow: var(--shadow);
+    border: 1px solid var(--primary-light);
+}
+
+.form-header {
+    text-align: center;
+    margin-bottom: 2.5rem;
+}
+
+.form-header h2 {
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.form-header p {
+    color: var(--text-medium);
+    font-size: 1.1rem;
+}
+
+.appointment-form .form-step {
+    margin-bottom: 2rem;
+}
+
+.appointment-form .step-label {
+    display: block;
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--text-dark);
+    margin-bottom: 1.2rem;
+    font-family: var(--font-body);
+    border-bottom: 2px solid var(--primary-light);
+    padding-bottom: 0.8rem;
+}
+
+.step-label i {
+    color: var(--primary-dark);
+    margin-right: 0.8rem;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group label {
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+    color: var(--text-medium);
+}
+
+/* Estilo para inputs y selects */
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+input[type="date"],
+select,
+textarea {
+    width: 100%;
+    padding: 0.9rem 1rem;
+    border: 1px solid var(--primary-light);
+    border-radius: 8px;
+    background-color: var(--white);
+    font-family: var(--font-body);
+    font-size: 1rem;
+    color: var(--text-dark);
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="tel"]:focus,
+input[type="date"]:focus,
+select:focus,
+textarea:focus {
+    outline: none;
+    border-color: var(--primary-medium);
+    box-shadow: 0 0 0 3px rgba(211, 184, 165, 0.3);
+}
+
+textarea { resize: vertical; }
+
+/* Grid para campos de fecha/hora y datos personales */
+.date-time-grid,
+.personal-info-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+}
+
+.form-submit {
+    text-align: center;
+    margin-top: 2.5rem;
+}
+
+.form-submit .btn {
+    width: 100%;
+    max-width: 300px;
+    padding: 1rem;
+    font-size: 1.1rem;
+    justify-content: center;
+}
+
+/* --- FOOTER --- */
+.site-footer { background-color: var(--text-dark); color: var(--primary-light); padding-top: 4rem; font-size: 0.9rem; }
+.footer-container { display: grid; grid-template-columns: 2fr 1fr 1.5fr 1fr; gap: 3rem; padding-bottom: 4rem; }
+.footer-about .logo { margin-bottom: 1rem; }
+.footer-about .logo span { color: var(--text-light); }
+.footer-about p { color: var(--text-light); }
+.site-footer h4 { font-family: var(--font-body); font-size: 1.1rem; margin-bottom: 1.5rem; color: var(--white); font-weight: 500; }
+.footer-links ul { list-style: none; }
+.footer-links li { margin-bottom: 0.8rem; }
+.footer-links a:hover { color: var(--white); }
+.footer-contact p { display: flex; align-items: flex-start; gap: 0.8rem; margin-bottom: 1rem; color: var(--text-light); }
+.footer-contact i { margin-top: 4px; }
+.social-icons { display: flex; gap: 1rem; }
+.social-icons a {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid var(--text-medium);
+    border-radius: 50%;
+    transition: all 0.3s ease;
+    color: var(--primary-light);
+}
+.social-icons a:hover { background-color: var(--primary-medium); border-color: var(--primary-medium); color: var(--text-dark); }
+.footer-bottom { border-top: 1px solid var(--text-medium); padding: 1.5rem 0; }
+.footer-bottom .container { display: flex; justify-content: space-between; color: var(--text-light); }
+.footer-bottom a:hover { color: var(--white); }
+
+/* ---------- LISTADO DE CITAS ---------- */
+.appointments-list {
+    max-width: 900px;
+    margin: 4rem auto 0;
+    background: linear-gradient(135deg, #fdf8f5 0%, #f7ece4 100%);
+    padding: 2.5rem 2.3rem;
+    border-radius: 18px;
+    box-shadow: var(--shadow);
+    border: 1px solid rgba(197, 169, 146, 0.3);
+}
+
+.appointments-list .list-header {
+    margin-bottom: 1.5rem;
+    text-align: left;
+}
+
+.appointments-list .list-header h2 {
+    font-size: 2rem;
+    margin-bottom: 0.4rem;
+}
+
+.appointments-list .list-header p {
+    font-size: 0.95rem;
+    color: var(--text-light);
+}
+
+/* Contenedor para scroll horizontal suave */
+.table-wrapper {
+    width: 100%;
+    overflow-x: auto;
+    padding-bottom: 0.5rem;
+}
+
+/* Tabla principal */
+.appointments-table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    font-size: 0.9rem;
+    background-color: var(--white);
+    border-radius: 14px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+}
+
+/* Encabezado de la tabla */
+.appointments-table thead {
+    background: linear-gradient(135deg, #EADED5 0%, #D3B8A5 100%);
+}
+
+.appointments-table th {
+    padding: 0.9rem 0.9rem;
+    font-weight: 600;
+    color: var(--text-dark);
+    text-align: left;
+    border-bottom: 1px solid rgba(255,255,255,0.5);
+    letter-spacing: 0.03em;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+}
+
+/* Celdas del cuerpo */
+.appointments-table td {
+    padding: 0.85rem 0.9rem;
+    text-align: left;
+    border-bottom: 1px solid #f2e6dd;
+    color: var(--text-medium);
+}
+
+/* Quitar borde de la última fila */
+.appointments-table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+/* Filas alternas y hover */
+.appointments-table tbody tr:nth-child(even) {
+    background-color: #fbf4ee;
+}
+
+.appointments-table tbody tr:hover {
+    background-color: #f7efe7;
+    transition: background-color 0.2s ease;
+}
+
+/* Columna de hora un poco más angosta / centrada */
+.appointments-table th:nth-child(3),
+.appointments-table td:nth-child(3) {
+    width: 90px;
+    white-space: nowrap;
+}
+
+/* Columna de acciones centrada */
+.appointments-table th:last-child,
+.appointments-table td:last-child {
+    text-align: center;
+}
+
+/* Mensaje sin citas */
+.no-appointments {
+    text-align: center;
+    margin-top: 1.5rem;
+    color: var(--text-light);
+    font-size: 0.95rem;
+}
+
+/* Botones de acciones */
+.action-buttons {
+    display: inline-flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.action-btn {
+    padding: 0.4rem 0.85rem;
+    border-radius: 999px;
+    border: none;
+    cursor: pointer;
+    font-size: 0.78rem;
+    font-weight: 500;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+    box-shadow: 0 3px 8px rgba(0,0,0,0.08);
+    transition: transform 0.15s ease, box-shadow 0.15s ease, background-color 0.2s ease;
+}
+
+.action-btn i {
+    font-size: 0.75rem;
+}
+
+/* Editar */
+.action-btn.edit {
+    background-color: var(--primary-medium);
+    color: var(--text-dark);
+}
+
+.action-btn.edit:hover {
+    background-color: var(--primary-dark);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.12);
+}
+
+/* Cancelar */
+.action-btn.cancel {
+    background-color: #e57373;
+    color: #fff;
+}
+
+.action-btn.cancel:hover {
+    background-color: #d32f2f;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.14);
+}
+
+/* ---------- MEDIA QUERIES PARA EL LISTADO ---------- */
+
+@media (max-width: 768px) {
+    .appointments-list {
+        padding: 1.8rem 1.4rem;
+        margin-top: 3rem;
+    }
+
+    .appointments-list .list-header h2 {
+        font-size: 1.7rem;
+    }
+
+    .appointments-table {
+        font-size: 0.82rem;
+    }
+
+    .appointments-table th,
+    .appointments-table td {
+        padding: 0.7rem 0.7rem;
+    }
+
+    .action-buttons {
+        flex-direction: column;
+    }
+
+    .action-btn {
+        width: 100%;
+        justify-content: center;
+    }
+}
+
+
+/* ---------- MEDIA QUERIES ---------- */
+
+/* Tablets y pantallas medianas */
+@media (max-width: 992px) {
+    h1 { font-size: 2.8rem; }
+    h2 { font-size: 2.2rem; }
+    .main-nav { display: none; }
+    .hero-container, .about-intro-container { grid-template-columns: 1fr; flex-direction: column; }
+    .hero-text-centered { text-align: center; }
+    .about-intro-text { text-align: center; }
+    .service-cards-container { grid-template-columns: 1fr; }
+    .service-two-column { grid-template-columns: 1fr; }
+    .footer-container { grid-template-columns: 1fr 1fr; }
+}
+
+/* Móviles */
+@media (max-width: 768px) {
+    h1 { font-size: 2.5rem; }
+    h2 { font-size: 2rem; }
+    section { padding: 4rem 0; }
+
+    .date-time-grid,
+    .personal-info-grid {
+        grid-template-columns: 1fr; /* Una columna en pantallas pequeñas */
+    }
+
+    .form-container {
+        padding: 2rem;
+    }
+
+    .form-header h2 {
+        font-size: 2rem;
+    }
+
+    .appointments-list {
+        padding: 1.5rem;
+        margin-top: 3rem;
+    }
+
+    .appointments-table th,
+    .appointments-table td {
+        font-size: 0.8rem;
+    }
+
+    .footer-container { grid-template-columns: 1fr; text-align: center; }
+    .footer-contact p { justify-content: center; }
+    .social-icons { justify-content: center; }
+    .footer-bottom .container { flex-direction: column; text-align: center; gap: 1rem; }
+}
